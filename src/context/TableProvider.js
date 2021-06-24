@@ -11,7 +11,7 @@ function TableProvider({ children }) {
     const responseJSON = await response.json();
     setData(responseJSON.results);
   };
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     getPlanetsAPI();
@@ -19,7 +19,7 @@ function TableProvider({ children }) {
 
   return (
     <TableContext.Provider
-      value={ {/* ...state */ } }
+      value={ { data } }
     >
       { children }
     </TableContext.Provider>
