@@ -4,6 +4,7 @@ import TableContext from './TableContext';
 
 function TableProvider({ children }) {
   const [data, setData] = useState([]);
+  const [input, setInput] = useState('');
 
   const responseURL = 'https://swapi-trybe.herokuapp.com/api/planets/';
 
@@ -18,9 +19,13 @@ function TableProvider({ children }) {
     getPlanetsAPI();
   }, []);
 
+  const handleChange = ({ target }) => {
+    setInput(target.value);
+  };
+
   return (
     <TableContext.Provider
-      value={ { data } }
+      value={ { data, handleChange } }
     >
       { children }
     </TableContext.Provider>

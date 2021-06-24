@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import TableContext from '../context/TableContext';
 
 function Table() {
-  const { data } = useContext(TableContext);
+  const { data, handleChange } = useContext(TableContext);
   return (
     <div>
+      <input data-testid="name-filter" onChange={ { handleChange } } />
       <button
         type="button"
       >
