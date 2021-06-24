@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import TableContext from './TableContext';
 
 function TableProvider({ children }) {
@@ -25,5 +26,9 @@ function TableProvider({ children }) {
     </TableContext.Provider>
   );
 }
+
+TableProvider.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default TableProvider;
