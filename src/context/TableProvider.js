@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import TableContext from './TableContext';
 
 function TableProvider({ children }) {
-  const [data, setData] = useState([]);
   const [input, setInput] = useState('');
+  const [data, setData] = useState([]);
 
   const responseURL = 'https://swapi-trybe.herokuapp.com/api/planets/';
 
@@ -13,7 +13,6 @@ function TableProvider({ children }) {
     const responseJSON = await response.json();
     setData(responseJSON.results);
   };
-  // console.log(data);
 
   useEffect(() => {
     getPlanetsAPI();
@@ -23,9 +22,18 @@ function TableProvider({ children }) {
     setInput(target.value);
   };
 
+  const context = { data,
+    handleChange,
+    filters: {
+      filterByName: {
+        name: input,
+      },
+    },
+  };
+
   return (
     <TableContext.Provider
-      value={ { data, handleChange } }
+      value={ context }
     >
       { children }
     </TableContext.Provider>

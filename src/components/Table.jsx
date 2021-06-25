@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import TableContext from '../context/TableContext';
 
 function Table() {
-  const { data, handleChange } = useContext(TableContext);
+  const { data, handleChange,
+    filters: { filterByName: { name } } } = useContext(TableContext);
   return (
     <div>
-      <input data-testid="name-filter" onChange={ { handleChange } } />
+      <input data-testid="name-filter" onChange={ handleChange } />
       <button
         type="button"
       >
@@ -30,35 +31,24 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ name,
-            rotation_period: rotationPeriod,
-            orbital_period: orbitalPeriod,
-            diameter,
-            climate,
-            gravity,
-            terrain,
-            surface_water: surfaceWater,
-            population,
-            films,
-            created,
-            edited,
-            url,
-          }, index) => (
-            <tr key={ index }>
-              <td>{name}</td>
-              <td>{ rotationPeriod }</td>
-              <td>{ orbitalPeriod }</td>
-              <td>{ diameter }</td>
-              <td>{ climate }</td>
-              <td>{ gravity }</td>
-              <td>{ terrain }</td>
-              <td>{ surfaceWater }</td>
-              <td>{ population }</td>
-              <td>{ films }</td>
-              <td>{ created }</td>
-              <td>{ edited }</td>
-              <td>{ url }</td>
-            </tr>))}
+          {data.filter((filter) => filter.name.includes(name))
+            .map((input) => (
+
+              <tr key={ input.name }>
+                <td>{input.name}</td>
+                <td>{ input.rotation_period }</td>
+                <td>{ input.orbital_period }</td>
+                <td>{ input.diameter }</td>
+                <td>{ input.climate }</td>
+                <td>{ input.gravity }</td>
+                <td>{ input.terrain }</td>
+                <td>{ input.surfaceWater }</td>
+                <td>{ input.population }</td>
+                <td>{ input.films }</td>
+                <td>{ input.created }</td>
+                <td>{ input.edited }</td>
+                <td>{ input.url }</td>
+              </tr>))}
         </tbody>
       </table>
     </div>
