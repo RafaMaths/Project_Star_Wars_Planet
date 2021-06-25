@@ -7,6 +7,17 @@ function Table() {
   return (
     <div>
       <input data-testid="name-filter" onChange={ handleChange } />
+      <select
+        name="column"
+        data-testid="column-filter"
+      >
+        <option value="population">population</option>
+        <option value="orbital_period">orbital_period</option>
+        <option value="diameter">diameter</option>
+        <option value="rotation_period">rotation_period</option>
+        <option value="surface_water">surface_water</option>
+      </select>
+
       <button
         type="button"
       >
@@ -33,7 +44,6 @@ function Table() {
         <tbody>
           {data.filter((filter) => filter.name.includes(name))
             .map((input) => (
-
               <tr key={ input.name }>
                 <td>{input.name}</td>
                 <td>{ input.rotation_period }</td>
@@ -42,7 +52,7 @@ function Table() {
                 <td>{ input.climate }</td>
                 <td>{ input.gravity }</td>
                 <td>{ input.terrain }</td>
-                <td>{ input.surfaceWater }</td>
+                <td>{ input.surface_water }</td>
                 <td>{ input.population }</td>
                 <td>{ input.films }</td>
                 <td>{ input.created }</td>

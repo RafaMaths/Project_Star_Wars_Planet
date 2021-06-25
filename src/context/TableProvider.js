@@ -5,6 +5,11 @@ import TableContext from './TableContext';
 function TableProvider({ children }) {
   const [input, setInput] = useState('');
   const [data, setData] = useState([]);
+  const [filters, setFilters] = useState({
+    filterByName: {
+      name: '',
+    },
+  });
 
   const responseURL = 'https://swapi-trybe.herokuapp.com/api/planets/';
 
