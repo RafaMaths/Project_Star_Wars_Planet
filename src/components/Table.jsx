@@ -2,14 +2,16 @@ import React, { useContext } from 'react';
 import TableContext from '../context/TableContext';
 
 function Table() {
-  const { data, handleChange,
+  const { data, handleChange, handleSelect, handleClick,
     filters: { filterByName: { name } } } = useContext(TableContext);
   return (
     <div>
       <input data-testid="name-filter" onChange={ handleChange } />
       <select
+        id=""
         name="column"
         data-testid="column-filter"
+        onChange={ handleSelect }
       >
         <option value="population">population</option>
         <option value="orbital_period">orbital_period</option>
@@ -18,8 +20,30 @@ function Table() {
         <option value="surface_water">surface_water</option>
       </select>
 
+      <select
+        id=""
+        name="comparison"
+        data-testid="comparison-filter"
+        onChange={ handleSelect }
+      >
+        <option value="maior que">maior que</option>
+        <option value="igual a">igual a</option>
+        <option value="menor que">menor que</option>
+
+      </select>
+
+      <input
+        name="number"
+        maxle
+        type="number"
+        data-testid="value-filter"
+        onChange={ handleSelect }
+      />
+
       <button
         type="button"
+        data-testid="button-filter"
+        onClick={ handleClick }
       >
         Filtro
       </button>
