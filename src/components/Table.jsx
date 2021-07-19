@@ -5,34 +5,48 @@ function Table() {
   const { data, handleChange, handleSelect, handleClick,
     filters: { filterByName: { name } } } = useContext(TableContext);
   return (
-    <div>
-      <input data-testid="name-filter" onChange={ handleChange } />
-      <select
-        id=""
-        name="column"
-        data-testid="column-filter"
-        onChange={ handleSelect }
-      >
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
-      </select>
+    <main className="main">
+      <input
+        className="input is-hovered"
+        type="text"
+        placeholder="Escreva o nome do planeta"
+        data-testid="name-filter"
+        onChange={ handleChange }
 
-      <select
-        id=""
-        name="comparison"
-        data-testid="comparison-filter"
-        onChange={ handleSelect }
-      >
-        <option value="maior que">maior que</option>
-        <option value="igual a">igual a</option>
-        <option value="menor que">menor que</option>
+      />
 
-      </select>
+      <div className="select is-primary">
+        <select
+          id=""
+          name="column"
+          data-testid="column-filter"
+          onChange={ handleSelect }
+        >
+          <option>Filtro de Coluna</option>
+          <option value="population">population</option>
+          <option value="orbital_period">orbital_period</option>
+          <option value="diameter">diameter</option>
+          <option value="rotation_period">rotation_period</option>
+          <option value="surface_water">surface_water</option>
+        </select>
+      </div>
+
+      <div className="select is-primary">
+        <select
+          id=""
+          name="comparison"
+          data-testid="comparison-filter"
+          onChange={ handleSelect }
+        >
+          <option value="maior que">maior que</option>
+          <option value="igual a">igual a</option>
+          <option value="menor que">menor que</option>
+        </select>
+      </div>
 
       <input
+        className="input is-primary"
+        placeholder="valor"
         name="number"
         maxle
         type="number"
@@ -41,16 +55,18 @@ function Table() {
       />
 
       <button
+        className="button is-primary is-focused"
         type="button"
         data-testid="button-filter"
         onClick={ handleClick }
       >
-        Filtro
+        Filtrar
       </button>
-      <table>
+
+      <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidt">
         <thead>
           <tr>
-            <th>name</th>
+            <th>Name</th>
             <th>Rotation Period</th>
             <th>Orbital Period</th>
             <th>Diameter</th>
@@ -85,7 +101,7 @@ function Table() {
               </tr>))}
         </tbody>
       </table>
-    </div>
+    </main>
   );
 }
 

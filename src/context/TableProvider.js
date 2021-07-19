@@ -48,7 +48,8 @@ function TableProvider({ children }) {
 
     const filterData = data.filter((e) => {
       if (comparison === 'maior que') {
-        console.log(typeof (Number(e[column])));
+        // console.log(typeof Number(e[column]));
+        // console.log(typeof (Number(e[column])));
 
         return Number(e[column]) > Number(number);
       }
